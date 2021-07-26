@@ -20,7 +20,7 @@ void adder(c **head, int plate)
 		nd->l = 0;
 		nd->n = *head;
 		*head = nd;
-		printf("c %d joined the race\n", plate);
+		printf("Car %d joined the race\n", plate);
 		return;
 	}
 
@@ -73,5 +73,5 @@ void race_state(int *plate, size_t size)
 	printf("Race state:\n");
 
 	for (nd = head; nd; nd = nd->n)
-		printf("Car %d [%lu l]\n", nd->plate, nd->l);
+		printf("Car %d [%lu laps]\n", nd->plate, nd->l);
 }
