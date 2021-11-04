@@ -66,7 +66,7 @@ void print_python_list(PyObject *p)
 
 	setbuf(stdout, NULL);
 	printf("[*] Python list info\n");
-    if (!p || p->ob_type != &PyList_Type)
+	if (!p || !PyList_Check(p))
 	{
 		printf("  [ERROR] Invalid List Object\n");
 		return;
