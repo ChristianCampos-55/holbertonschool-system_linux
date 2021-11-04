@@ -6,8 +6,8 @@
  */
 void print_python_list(PyObject *p)
 {
-    ssize_t i;
-    ssize_t ls = ssize_t(p);
+    p_ssize_t i;
+    p_ssize_t ls = p_ssize_t(p);
 
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %lu\n", ls);
