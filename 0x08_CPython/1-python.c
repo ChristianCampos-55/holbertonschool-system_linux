@@ -2,18 +2,18 @@
 
 /**
  * print_python_list - Prints basic info of a python list
- * @p: pointer to on¡bject structure
+ * @p: pointer to object structure
  */
+
 void print_python_list(PyObject *p)
 {
-    p_ssize_t i;
-    p_ssize_t ls = p_ssize_t(p);
-
+	Py_ssize_t i;
+	Py_ssize_t list_size = PyList_Size(p);
 	printf("[*] Python list info\n");
-	printf("[*] Size of the Python List = %lu\n", ls);
+	printf("[*] Size of the Python List = %lu\n", list_size);
 	printf("[*] Allocated = %lu\n", ((PyListObject *)p)->allocated);
-
-	for (i = 0; i < ls; i++)
-		printf("Element %ld: %s\n", i,
-                ((PyListObject *)p)->ob_item[i]->ob_type->tp_name);
+	for (i = 0; i < list_size; i++)
+	{
+		printf("Element %ld: %s\n", i, Py_TYPE(PyList_GetItem(p, i))->tp_name);
+	}
 }
