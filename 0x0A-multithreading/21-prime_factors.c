@@ -29,7 +29,7 @@ void f_even(list_t *list, unsigned long *n)
 /**
  * f - finds primer numbers
  * @list: linked list
- * @n: number to be factorized
+ * @von_count: number to be factorized
  * Return: linked list
 */
 
