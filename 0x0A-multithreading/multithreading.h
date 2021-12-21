@@ -9,6 +9,7 @@
 #include <pthread.h>
 #include <stdarg.h>
 #include "list.h"
+#include "structures.h"
 
 /**
  * struct pixel_s - RGB pixel
@@ -19,9 +20,9 @@
  */
 typedef struct pixel_s
 {
-    uint8_t r;
-    uint8_t g;
-    uint8_t b;
+	uint8_t r;
+	uint8_t g;
+	uint8_t b;
 } pixel_t;
 
 /**
@@ -33,9 +34,9 @@ typedef struct pixel_s
  */
 typedef struct img_s
 {
-    size_t w;
-    size_t h;
-    pixel_t *pixels;
+	size_t w;
+	size_t h;
+	pixel_t *pixels;
 } img_t;
 
 /**
@@ -46,8 +47,8 @@ typedef struct img_s
  */
 typedef struct kernel_s
 {
-    size_t size;
-    float **matrix;
+	size_t size;
+	float **matrix;
 } kernel_t;
 
 /**
@@ -63,13 +64,13 @@ typedef struct kernel_s
  */
 typedef struct blur_portion_s
 {
-    img_t const *img;
-    img_t *img_blur;
-    size_t x;
-    size_t y;
-    size_t w;
-    size_t h;
-    kernel_t const *kernel;
+	img_t const *img;
+	img_t *img_blur;
+	size_t x;
+	size_t y;
+	size_t w;
+	size_t h;
+	kernel_t const *kernel;
 } blur_portion_t;
 
 void *thread_entry(void *arg);
@@ -77,5 +78,13 @@ int tprintf(char const *format, ...);
 void blur_portion(blur_portion_t const *portion);
 int tprintf(char const *format, ...);
 list_t *prime_factors(char const *s);
+task_t *create_task(task_entry_t entry, void *param);
+void destroy_task(task_t *task);
+void *exec_tasks(list_t const *tasks);
+void blurrer(blur_portion_t const *portion, size_t x, size_t y);
+void b_checker(blur_portion_t const *portion, size_t *s_x,
+		   size_t *s_y, size_t *e_x, size_t *e_y,
+		   size_t *kernel_x, size_t *kernel_y);
+void blur_portion(blur_portion_t const *portion);
 
 #endif
