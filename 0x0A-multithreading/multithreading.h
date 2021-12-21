@@ -73,10 +73,6 @@ typedef struct blur_portion_s
 
 void *thread_entry(void *arg);
 int tprintf(char const *format, ...);
-void blurrer(blur_portion_t const *portion, size_t x, size_t y);
-void b_checker(blur_portion_t const *portion, size_t *s_x,
-		   size_t *s_y, size_t *e_x, size_t *e_y,
-		   size_t *kernel_x, size_t *kernel_y);
 void blur_portion(blur_portion_t const *portion);
 int tprintf(char const *format, ...);
 
