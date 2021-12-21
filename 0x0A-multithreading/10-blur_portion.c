@@ -36,30 +36,30 @@ void blur_portion(blur_portion_t const *portion)
 void blurrer(blur_portion_t const *portion, size_t x, size_t y)
 {
 	size_t s_x = x, s_y = y, e_x, e_y;
-	size_t x, y, k_x, k_y, kernel_x, kernel_y;
+	size_t a, c, k_x, k_y, kernel_x, kernel_y;
 	float r, g, b, k;
 
 	k_x = k_y = r = g = b = k = 0;
 
 	b_checker(portion, &s_x, &s_y, &e_x,
 		      &e_y, &kernel_x, &kernel_y);
-	x = s_x, y = s_y;
+	a = s_x, c = s_y;
 	k_x = kernel_x, k_y = kernel_y;
 
-	while (y < e_y)
+	while (c < e_y)
 	{
 		r += portion->kernel->matrix[k_x][k_y]
-			* portion->img->pixels[portion->img->w * y + x].r;
+			* portion->img->pixels[portion->img->w * c + a].r;
 		g += portion->kernel->matrix[k_x][k_y]
-			* portion->img->pixels[portion->img->w * y + x].g;
+			* portion->img->pixels[portion->img->w * c + a].g;
 		b += portion->kernel->matrix[k_x][k_y]
-			* portion->img->pixels[portion->img->w * y + x].b;
+			* portion->img->pixels[portion->img->w * c + a].b;
 		k += portion->kernel->matrix[k_x][k_y];
 		++k_x, ++x;
 
-		if (x == e_x)
+		if (a == e_x)
 		{
-			x = s_x, ++y;
+			a = s_x, ++c;
 			k_x = kernel_x, ++k_y;
 		}
 	}
