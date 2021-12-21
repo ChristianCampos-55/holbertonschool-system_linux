@@ -73,6 +73,9 @@ typedef struct blur_portion_s
 	kernel_t const *kernel;
 } blur_portion_t;
 
+
+void mutex_init(void) __attribute__((constructor));
+void mutex_destroy(void) __attribute__((destructor));
 void *thread_entry(void *arg);
 int tprintf(char const *format, ...);
 void blur_portion(blur_portion_t const *portion);
